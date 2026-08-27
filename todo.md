@@ -29,4 +29,8 @@
 - [x] Create an Arc Studio page with authentic identity, work-in-progress, what-we-do, and contact information in yellow and brown.
 - [x] Create a Beat of Dhaka page with authentic identity, work-in-progress, what-we-do, and contact information in red and white.
 - [x] Replace the footer's generic Facebook arrow with a Facebook logo icon.
+- [x] Reduce visual payload and improve image loading behavior without removing Nayeem's supplied artwork.
+- [x] Redesign the entry interaction so the pixel car visibly travels along an imaginary road into Start Journey.
+- [x] Remove Notes from the primary navigation while retaining the Notes content section.
+- [x] Keep a clear header and footer navigation presence on the main portfolio and both business pages.
 - [ ] Save a final checkpoint and deliver the corrected version.

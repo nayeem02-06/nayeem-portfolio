@@ -19,7 +19,7 @@ import {
 type Language = "en" | "ja";
 
 const assets = {
-  hero: "/manus-storage/nayeem-red-mecha-hero_7f623215.png",
+  hero: "/manus-storage/nayeem-red-mecha-hero-optimized_f49925e7.webp",
   introCar: "/manus-storage/nayeem-pixel-car_5fa4f2ea.png",
   mark: "/manus-storage/nayeem-pixel-portrait-hat-mark_9a411193.png",
 };
@@ -31,11 +31,11 @@ const ventureLogos = [
 ];
 
 const animeCards = [
-  { title: "Darling in the Franxx", label: "FAVOURITE ANIME / 01", source: "/manus-storage/darling-in-the-franxx-poster_43f37f5b.png", alt: "Darling in the Franxx poster" },
-  { title: "One Piece", label: "FAVOURITE ANIME / 02", source: "/manus-storage/one-piece-poster_158c1c80.png", alt: "One Piece poster" },
-  { title: "Evangelion", label: "FAVOURITE ANIME / 03", source: "/manus-storage/evangelion-poster_4c1d7963.png", alt: "Neon Genesis Evangelion poster" },
-  { title: "Nana", label: "FAVOURITE ANIME / 04", source: "/manus-storage/nana-poster_ed8f8a8a.png", alt: "Nana poster" },
-  { title: "Zero Two", label: "FAVOURITE CHARACTER", source: "/manus-storage/zero-two-portrait_cedbaca1.png", alt: "Zero Two from Darling in the Franxx" },
+  { title: "Darling in the Franxx", label: "FAVOURITE ANIME / 01", source: "/manus-storage/darling-in-the-franxx-poster-optimized_2ad6bae1.webp", alt: "Darling in the Franxx poster" },
+  { title: "One Piece", label: "FAVOURITE ANIME / 02", source: "/manus-storage/one-piece-poster-optimized_5de132db.webp", alt: "One Piece poster" },
+  { title: "Evangelion", label: "FAVOURITE ANIME / 03", source: "/manus-storage/evangelion-poster-optimized_8b848c9b.webp", alt: "Neon Genesis Evangelion poster" },
+  { title: "Nana", label: "FAVOURITE ANIME / 04", source: "/manus-storage/nana-poster-optimized_950029f5.webp", alt: "Nana poster" },
+  { title: "Zero Two", label: "FAVOURITE CHARACTER", source: "/manus-storage/zero-two-portrait-optimized_1bbce195.webp", alt: "Zero Two from Darling in the Franxx" },
 ];
 
 const socials = [
@@ -73,7 +73,6 @@ const copy = {
     nav: [
       ["Arc Studio", "/arc-studio"],
       ["Beat of Dhaka", "/beat-of-dhaka"],
-      ["Notes", "#notes"],
       ["Contact", "#contact"],
     ],
     bootKicker: "PERSONAL PORTFOLIO / 01",
@@ -135,7 +134,6 @@ const copy = {
     nav: [
       ["ARC STUDIO", "/arc-studio"],
       ["BEAT OF DHAKA", "/beat-of-dhaka"],
-      ["NOTE", "#notes"],
       ["連絡", "#contact"],
     ],
     bootKicker: "PERSONAL PORTFOLIO / 01",
@@ -261,13 +259,18 @@ export default function Home() {
       {!booted && (
         <section className={`boot-screen ${entryAnimating ? "boot-screen--exit" : ""}`} aria-label="Midnight Signal introduction">
           <div className="boot-grain" />
+          <div className="boot-car-stage" aria-hidden="true">
+            <svg className="boot-road" viewBox="0 0 600 520" preserveAspectRatio="none">
+              <path d="M300 28 C95 94 106 266 238 387 C269 415 292 435 300 466" />
+              <path d="M300 28 C95 94 106 266 238 387 C269 415 292 435 300 466" />
+            </svg>
+            <img className="boot-mark boot-mark--car" src={assets.introCar} alt="" />
+          </div>
           <div className="boot-content">
             <div className="boot-status"><span className="status-dot" /> {c.bootKicker}</div>
-            <img className="boot-mark boot-mark--car" src={assets.introCar} alt="Pixel-art red sports car" />
             <h1 className="boot-title">{c.bootTitle.split("\n").map((line) => <span key={line}>{line}</span>)}</h1>
             <p className="boot-copy"><span>{c.bootCopy}</span><span>{c.bootPrompt}</span></p>
             <button className={`pixel-button pixel-button--hero ${entryAnimating ? "pixel-button--hit" : ""}`} type="button" onClick={enterSite} disabled={entryAnimating}>
-              <img className="boot-crash-car" src={assets.introCar} alt="" aria-hidden="true" />
               <span className="boot-impact" aria-hidden="true" />
               <span>{c.enter}</span><ArrowUpRight size={16} strokeWidth={2.5} />
             </button>

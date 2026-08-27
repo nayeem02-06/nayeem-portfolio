@@ -167,6 +167,7 @@ export default function VenturePage({ venture }: { venture: VentureKey }) {
     <main className={`venture-page venture-page--${venture} ${language === "ja" ? "venture-page--ja" : ""}`}>
       <header className="venture-header">
         <a href="/" className="venture-back"><ArrowLeft size={17} /> <span>{c.back}</span></a>
+        <nav className="venture-header-nav" aria-label="Portfolio navigation"><a href="/arc-studio" aria-current={venture === "arc" ? "page" : undefined}>ARC</a><a href="/beat-of-dhaka" aria-current={venture === "beat" ? "page" : undefined}>BEAT</a></nav>
         <button className="venture-language" type="button" onClick={() => setLanguage((current) => current === "en" ? "ja" : "en")}>{c.language}</button>
       </header>
 
@@ -215,6 +216,11 @@ export default function VenturePage({ venture }: { venture: VentureKey }) {
           <a href="https://mail.google.com/mail/?view=cm&fs=1&to=nayeem002d%40gmail.com&su=Portfolio%20enquiry&body=Hi%20Nayeem%2C%0A%0A" target="_blank" rel="noreferrer"><span>{c.email}</span><Mail size={17} /></a>
         </div>
       </section>
+      <footer className="venture-footer">
+        <a href="/">NAYEEM<span>.</span></a>
+        <p>{config.name}</p>
+        <nav aria-label="Venture links"><a href="/arc-studio">ARC STUDIO</a><a href="/beat-of-dhaka">BEAT OF DHAKA</a></nav>
+      </footer>
     </main>
   );
 }
