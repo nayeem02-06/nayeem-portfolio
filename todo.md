@@ -39,3 +39,10 @@
 - [x] Verify the Discord route, responsive motion, and refined visual hierarchy before saving the next checkpoint.
 - [x] Remove excess desktop dead space in the Signal section and integrate the decorative marker with the content layout.
 - [x] Verify the corrected Signal composition at wide desktop and mobile widths before saving the layout-fix checkpoint.
+- [x] Replace the footer’s Discord placeholder with a recognisable Discord logo treatment.
+- [x] Make the wide-screen personality-card area more compact without reducing mobile readability.
+- [x] Correct the Discord contact button’s spacing and alignment to match the other contact actions.
+- [x] Verify the detail-level contact and personality refinements before saving the next checkpoint.
+- [x] Tighten the Beat of Dhaka closing CTA and create a smoother, more intentional transition into its footer.
+- [x] Use one fixed NAYEEM top bar across the personal portfolio, Arc Studio, and Beat of Dhaka routes without covering page content.
+- [x] Verify the shared top bar remains usable on desktop and mobile before saving the navigation update.

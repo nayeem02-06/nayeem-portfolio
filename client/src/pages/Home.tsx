@@ -19,6 +19,10 @@ import {
 
 type Language = "en" | "ja";
 
+function DiscordMark({ size = 17 }: { size?: number }) {
+  return <svg className="discord-mark" width={size} height={size} viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.54 4.44A16.14 16.14 0 0 0 15.49 3l-.5 1.02a15.05 15.05 0 0 0-5.98 0L8.5 3a16.4 16.4 0 0 0-4.05 1.45C1.9 8.14 1.2 11.74 1.55 15.3a16.2 16.2 0 0 0 4.97 2.52l1.2-1.63a9.42 9.42 0 0 1-1.89-.91l.46-.36c3.65 1.7 7.62 1.7 11.22 0l.56.46c-.6.35-1.23.65-1.89.9l1.2 1.64a16.16 16.16 0 0 0 4.97-2.53c.42-4.13-.72-7.69-2.81-10.95ZM8.7 13.12c-1.1 0-2-.99-2-2.2s.88-2.2 2-2.2 2 .99 2 2.2-.89 2.2-2 2.2Zm6.6 0c-1.1 0-2-.99-2-2.2s.88-2.2 2-2.2 2 .99 2 2.2-.9 2.2-2 2.2Z" /></svg>;
+}
+
 const assets = {
   hero: "/manus-storage/nayeem-red-mecha-hero-optimized_f49925e7.webp",
   introCar: "/manus-storage/nayeem-pixel-car_5fa4f2ea.png",
@@ -44,7 +48,7 @@ const socials = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/nayeem-002d/", icon: Linkedin },
   { label: "Facebook", href: "https://www.facebook.com/Nayeem.sus", icon: Facebook },
   { label: "Creator Page", href: "https://www.facebook.com/naymur911", icon: Facebook },
-  { label: "Discord Server", href: "https://discord.gg/MRyNmhHqa2", icon: MessageCircle },
+  { label: "Discord Server", href: "https://discord.gg/MRyNmhHqa2", icon: DiscordMark },
 ];
 
 const ventures = [
@@ -412,7 +416,7 @@ export default function Home() {
         <div className="contact-actions">
           <a className="pixel-button pixel-button--contact" href="https://mail.google.com/mail/?view=cm&fs=1&to=nayeem002d%40gmail.com&su=Portfolio%20enquiry&body=Hi%20Nayeem%2C%0A%0A" target="_blank" rel="noreferrer" aria-label="Compose an email to Nayeem in Gmail"><span>{c.email}</span><Mail size={17} /></a>
           <a className="pixel-button pixel-button--whatsapp" href="https://wa.me/8801609223775?text=Hi%20Nayeem%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect." target="_blank" rel="noreferrer" aria-label="Message Nayeem on WhatsApp"><span>{c.whatsapp}</span><MessageCircle size={17} /></a>
-          <a className="pixel-button pixel-button--discord" href="https://discord.gg/MRyNmhHqa2" target="_blank" rel="noreferrer" aria-label="Join Nayeem's Discord server"><span>{c.discord}</span><Radio size={17} /></a>
+          <a className="pixel-button pixel-button--discord" href="https://discord.gg/MRyNmhHqa2" target="_blank" rel="noreferrer" aria-label="Join Nayeem's Discord server"><span>{c.discord}</span><DiscordMark /></a>
         </div>
         <div className="contact-meta"><span>{c.role}</span><span><i className="live-dot" /> {c.available}</span></div>
       </section>

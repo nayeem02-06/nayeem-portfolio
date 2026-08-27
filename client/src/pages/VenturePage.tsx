@@ -2,8 +2,9 @@
  * Venture pages style reminder: each page is a focused brand portal with generous
  * space, direct evidence, and a visual system that belongs only to its venture.
  */
-import { ArrowLeft, ArrowUpRight, Mail, MessageCircle, Sparkles } from "lucide-react";
+import { ArrowUpRight, Mail, MessageCircle, Sparkles } from "lucide-react";
 import { useState } from "react";
+import GlobalHeader from "../components/GlobalHeader";
 
 type Locale = "en" | "ja";
 type VentureKey = "arc" | "beat";
@@ -165,11 +166,7 @@ export default function VenturePage({ venture }: { venture: VentureKey }) {
 
   return (
     <main className={`venture-page venture-page--${venture} ${language === "ja" ? "venture-page--ja" : ""}`}>
-      <header className="venture-header">
-        <a href="/" className="venture-back"><ArrowLeft size={17} /> <span>{c.back}</span></a>
-        <nav className="venture-header-nav" aria-label="Portfolio navigation"><a href="/arc-studio" aria-current={venture === "arc" ? "page" : undefined}>ARC</a><a href="/beat-of-dhaka" aria-current={venture === "beat" ? "page" : undefined}>BEAT</a></nav>
-        <button className="venture-language" type="button" onClick={() => setLanguage((current) => current === "en" ? "ja" : "en")}>{c.language}</button>
-      </header>
+      <GlobalHeader active={venture} language={language} onLanguageChange={() => setLanguage((current) => current === "en" ? "ja" : "en")} />
       <div className="venture-station-rail" aria-hidden="true"><span>SIGNAL / 0{venture === "arc" ? "1" : "2"}</span><i /><span>23°48'N</span></div>
 
       <section className="venture-hero-panel">
