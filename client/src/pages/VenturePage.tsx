@@ -2,7 +2,7 @@
  * Venture pages style reminder: each page is a focused brand portal with generous
  * space, direct evidence, and a visual system that belongs only to its venture.
  */
-import { ArrowLeft, ArrowUpRight, Mail, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Mail, MessageCircle, Sparkles } from "lucide-react";
 import { useState } from "react";
 
 type Locale = "en" | "ja";
@@ -170,9 +170,11 @@ export default function VenturePage({ venture }: { venture: VentureKey }) {
         <nav className="venture-header-nav" aria-label="Portfolio navigation"><a href="/arc-studio" aria-current={venture === "arc" ? "page" : undefined}>ARC</a><a href="/beat-of-dhaka" aria-current={venture === "beat" ? "page" : undefined}>BEAT</a></nav>
         <button className="venture-language" type="button" onClick={() => setLanguage((current) => current === "en" ? "ja" : "en")}>{c.language}</button>
       </header>
+      <div className="venture-station-rail" aria-hidden="true"><span>SIGNAL / 0{venture === "arc" ? "1" : "2"}</span><i /><span>23°48'N</span></div>
 
       <section className="venture-hero-panel">
         <div className="venture-index" aria-hidden="true">0{venture === "arc" ? "1" : "2"}</div>
+        <div className="venture-moon-signal" aria-hidden="true"><i /><b /><b /><b /></div>
         <div className="venture-hero-copy">
           <p className="venture-eyebrow"><Sparkles size={14} /> {c.eyebrow}</p>
           <h1>{c.hero}</h1>
@@ -219,7 +221,7 @@ export default function VenturePage({ venture }: { venture: VentureKey }) {
       <footer className="venture-footer">
         <a href="/">NAYEEM<span>.</span></a>
         <p>{config.name}</p>
-        <nav aria-label="Venture links"><a href="/arc-studio">ARC STUDIO</a><a href="/beat-of-dhaka">BEAT OF DHAKA</a></nav>
+        <nav aria-label="Venture links"><a href="/arc-studio">ARC STUDIO</a><a href="/beat-of-dhaka">BEAT OF DHAKA</a><a href="https://discord.gg/MRyNmhHqa2" target="_blank" rel="noreferrer">DISCORD <MessageCircle size={12} /></a></nav>
       </footer>
     </main>
   );

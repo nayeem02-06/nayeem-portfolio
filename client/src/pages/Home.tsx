@@ -2,7 +2,7 @@
  * Midnight Signal style reminder: this is a guided night walk, not a résumé grid.
  * Use compact evidence, ember signals, pixel wayfinding, and mobile-first touch targets.
  */
-import { useState, type MouseEvent as ReactMouseEvent } from "react";
+import { useEffect, useState, type MouseEvent as ReactMouseEvent } from "react";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -13,6 +13,7 @@ import {
   Menu,
   MessageCircle,
   MoveUpRight,
+  Radio,
   X,
 } from "lucide-react";
 
@@ -43,6 +44,7 @@ const socials = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/nayeem-002d/", icon: Linkedin },
   { label: "Facebook", href: "https://www.facebook.com/Nayeem.sus", icon: Facebook },
   { label: "Creator Page", href: "https://www.facebook.com/naymur911", icon: Facebook },
+  { label: "Discord Server", href: "https://discord.gg/MRyNmhHqa2", icon: MessageCircle },
 ];
 
 const ventures = [
@@ -119,6 +121,7 @@ const copy = {
     contactCopy: "Write to me. I read every meaningful message.",
     email: "SEND A SIGNAL",
     whatsapp: "MESSAGE ON WHATSAPP",
+    discord: "JOIN DISCORD SERVER",
     footer: "NAYEEM / ALL SIGNALS ACTIVE",
     role: "CREATIVE MARKETER · FOUNDER",
     available: "OPEN TO A GOOD CONVERSATION",
@@ -180,6 +183,7 @@ const copy = {
     contactCopy: "メッセージを送ってください。意味のある言葉は、すべて読みます。",
     email: "SEND A SIGNAL",
     whatsapp: "WHATSAPPで連絡",
+    discord: "DISCORDサーバーに参加",
     footer: "NAYEEM / ALL SIGNALS ACTIVE",
     role: "CREATIVE MARKETER · FOUNDER",
     available: "OPEN TO A GOOD CONVERSATION",
@@ -195,6 +199,7 @@ export default function Home() {
   const [language, setLanguage] = useState<Language>("en");
   const [menuOpen, setMenuOpen] = useState(false);
   const [entryAnimating, setEntryAnimating] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [booted, setBooted] = useState(() => {
     const params = new URLSearchParams(window.location.search);
     const preview = params.get("preview");
@@ -202,6 +207,26 @@ export default function Home() {
     return preview === "main" || window.sessionStorage.getItem("nayeem-signal-entered") === "true";
   });
   const c = copy[language];
+
+  useEffect(() => {
+    let frame = 0;
+    const updateProgress = () => {
+      frame = 0;
+      const range = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(range > 0 ? Math.min(1, Math.max(0, window.scrollY / range)) : 0);
+    };
+    const requestUpdate = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateProgress);
+    };
+    updateProgress();
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    return () => {
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
 
   const finishEntry = () => {
     window.sessionStorage.setItem("nayeem-signal-entered", "true");
@@ -295,6 +320,7 @@ export default function Home() {
           </button>
         </div>
       </header>
+      <div className="journey-meter" aria-hidden="true"><span style={{ transform: `scaleX(${scrollProgress})` }} /></div>
 
       <div className={`mobile-menu ${menuOpen ? "mobile-menu--open" : ""}`} aria-hidden={!menuOpen}>
         <div className="mobile-menu__inner">
@@ -312,7 +338,7 @@ export default function Home() {
             <p>{c.heroNote}</p><span>{c.heroDetail}</span>
           </div>
         </div>
-        <a className="scroll-prompt" href="#signal"><span>{c.scroll}</span><ArrowDown size={16} /></a>
+        <a className="scroll-prompt" href="#signal" onClick={(event) => scrollToSection(event, "#signal")}><span>{c.scroll}</span><ArrowDown size={16} /></a>
         <div className="hero-coordinates" aria-hidden="true">23°48'N<br />90°24'E</div>
       </section>
 
@@ -386,6 +412,7 @@ export default function Home() {
         <div className="contact-actions">
           <a className="pixel-button pixel-button--contact" href="https://mail.google.com/mail/?view=cm&fs=1&to=nayeem002d%40gmail.com&su=Portfolio%20enquiry&body=Hi%20Nayeem%2C%0A%0A" target="_blank" rel="noreferrer" aria-label="Compose an email to Nayeem in Gmail"><span>{c.email}</span><Mail size={17} /></a>
           <a className="pixel-button pixel-button--whatsapp" href="https://wa.me/8801609223775?text=Hi%20Nayeem%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect." target="_blank" rel="noreferrer" aria-label="Message Nayeem on WhatsApp"><span>{c.whatsapp}</span><MessageCircle size={17} /></a>
+          <a className="pixel-button pixel-button--discord" href="https://discord.gg/MRyNmhHqa2" target="_blank" rel="noreferrer" aria-label="Join Nayeem's Discord server"><span>{c.discord}</span><Radio size={17} /></a>
         </div>
         <div className="contact-meta"><span>{c.role}</span><span><i className="live-dot" /> {c.available}</span></div>
       </section>

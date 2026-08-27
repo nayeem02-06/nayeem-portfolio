@@ -73,3 +73,9 @@ The wordmark uses a custom block arrangement of **N / 02 / D** cues, paired with
 - Prioritise mobile ergonomics, short copy, real venture links, performance, and personality over visual noise.
 - Avoid generic template layouts, excessive text, fabricated projects, testimonials, and unverified claims.
 - Keep images original or clearly licensed; never use copyrighted anime characters or screenshots as site assets.
+
+### Accepted visual-review amendments
+
+- Treat every route as a station within one signal corridor: keep the requested Arc Studio and Beat of Dhaka palettes, but repeat the Nayeem-level signal rail, coordinate labels, pixel-moon/antenna mark, and chapter wayfinding on both pages.
+- Signal Ember remains the shared interaction and focus color. Venture colors identify each station rather than replacing the portfolio's navigation language.
+- Use lightweight CSS atmosphere—grid fragments, dotted coordinates, restrained signal rings, and pixel pings—before adding image payload. This keeps the corridor lived-in while protecting the mobile-first performance goal.

@@ -34,3 +34,6 @@
 - [x] Remove Notes from the primary navigation while retaining the Notes content section.
 - [x] Keep a clear header and footer navigation presence on the main portfolio and both business pages.
 - [ ] Save a final checkpoint and deliver the corrected version.
+- [x] Add Nayeem's Discord server as an accessible, verified community link.
+- [x] Strengthen interaction, animation, and visual detail across the portfolio without sacrificing mobile performance or reduced-motion support.
+- [x] Verify the Discord route, responsive motion, and refined visual hierarchy before saving the next checkpoint.
