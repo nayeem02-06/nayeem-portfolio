@@ -2,7 +2,7 @@
  * Midnight Signal style reminder: this is a guided night walk, not a résumé grid.
  * Use compact evidence, ember signals, pixel wayfinding, and mobile-first touch targets.
  */
-import { useEffect, useState } from "react";
+import { useState, type MouseEvent as ReactMouseEvent } from "react";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -20,7 +20,7 @@ const assets = {
   hero: "/manus-storage/nayeem-midnight-hero_e7fd2756.png",
   ventures: "/manus-storage/nayeem-ventures-scene_d8d89493.png",
   japan: "/manus-storage/nayeem-japan-postcard_55ea60de.png",
-  mark: "/manus-storage/nayeem-signal-mark_9b29402c.png",
+  mark: "/manus-storage/nayeem-pixel-head-true-alpha_3d54bd78.png",
 };
 
 const socials = [
@@ -61,9 +61,10 @@ const copy = {
       ["Contact", "#contact"],
     ],
     bootKicker: "PERSONAL PORTFOLIO / 01",
-    bootTitle: "MIDNIGHT\nSIGNAL",
-    bootCopy: "A small window into Nayeem's world.",
-    enter: "ENTER",
+    bootTitle: "Enter\nNAYEEM.exe",
+    bootCopy: "An experience of how I think, create, and build.",
+    bootPrompt: "Enter if you're ready to explore.",
+    enter: "START JOURNEY",
     skip: "Skip intro",
     heroEyebrow: "TRANSMISSION 01 · DHAKA, BD",
     heroTitle: ["I BUILD", "WORLDS", "PEOPLE", "REMEMBER."],
@@ -119,9 +120,10 @@ const copy = {
       ["連絡", "#contact"],
     ],
     bootKicker: "PERSONAL PORTFOLIO / 01",
-    bootTitle: "MIDNIGHT\nSIGNAL",
-    bootCopy: "ナイームの世界への、小さな入り口。",
-    enter: "ENTER",
+    bootTitle: "Enter\nNAYEEM.exe",
+    bootCopy: "私がどう考え、創り、築くかを体験する場所。",
+    bootPrompt: "準備ができたら、旅を始めよう。",
+    enter: "START JOURNEY",
     skip: "イントロをスキップ",
     heroEyebrow: "TRANSMISSION 01 · DHAKA, BD",
     heroTitle: ["記憶に", "残る世界を", "つくって", "います。"],
@@ -172,14 +174,11 @@ const copy = {
 export default function Home() {
   const [language, setLanguage] = useState<Language>("en");
   const [menuOpen, setMenuOpen] = useState(false);
-  const [booted, setBooted] = useState(false);
+  const [booted, setBooted] = useState(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("preview") === "main" || window.sessionStorage.getItem("nayeem-signal-entered") === "true";
+  });
   const c = copy[language];
-
-  useEffect(() => {
-    if (window.sessionStorage.getItem("nayeem-signal-entered") === "true") {
-      setBooted(true);
-    }
-  }, []);
 
   const enterSite = () => {
     window.sessionStorage.setItem("nayeem-signal-entered", "true");
@@ -193,6 +192,19 @@ export default function Home() {
 
   const closeMenu = () => setMenuOpen(false);
 
+  const scrollToSection = (event: ReactMouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith("#")) return;
+    event.preventDefault();
+    const section = document.querySelector<HTMLElement>(href);
+    if (!section) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const headerOffset = 76;
+    const destination = section.getBoundingClientRect().top + window.scrollY - headerOffset;
+    window.scrollTo({ top: destination, behavior: reducedMotion ? "auto" : "smooth" });
+    window.history.replaceState(null, "", href);
+    setMenuOpen(false);
+  };
+
   return (
     <main className={`signal-shell ${language === "ja" ? "is-japanese" : ""}`}>
       {!booted && (
@@ -202,7 +214,7 @@ export default function Home() {
             <div className="boot-status"><span className="status-dot" /> {c.bootKicker}</div>
             <img className="boot-mark" src={assets.mark} alt="" />
             <h1 className="boot-title">{c.bootTitle.split("\n").map((line) => <span key={line}>{line}</span>)}</h1>
-            <p className="boot-copy">{c.bootCopy}</p>
+            <p className="boot-copy"><span>{c.bootCopy}</span><span>{c.bootPrompt}</span></p>
             <button className="pixel-button pixel-button--hero" type="button" onClick={enterSite}>
               <span>{c.enter}</span><ArrowUpRight size={16} strokeWidth={2.5} />
             </button>
@@ -218,7 +230,7 @@ export default function Home() {
           <span>NAYEEM<span className="brand-mark-dot">.</span></span>
         </a>
         <nav className="desktop-nav" aria-label="Primary navigation">
-          {c.nav.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
+          {c.nav.map(([label, href]) => <a key={href} href={href} onClick={(event) => scrollToSection(event, href)}>{label}</a>)}
         </nav>
         <div className="header-actions">
           <button className="language-button" onClick={changeLanguage} type="button" aria-label="Change language">{c.language}</button>
@@ -230,13 +242,12 @@ export default function Home() {
 
       <div className={`mobile-menu ${menuOpen ? "mobile-menu--open" : ""}`} aria-hidden={!menuOpen}>
         <div className="mobile-menu__inner">
-          {c.nav.map(([label, href], index) => <a key={href} style={{ "--menu-index": index } as React.CSSProperties} href={href} onClick={closeMenu}>{label}<ArrowUpRight size={18} /></a>)}
+          {c.nav.map(([label, href], index) => <a key={href} style={{ "--menu-index": index } as React.CSSProperties} href={href} onClick={(event) => scrollToSection(event, href)}>{label}<ArrowUpRight size={18} /></a>)}
           <div className="mobile-menu__social">{socials.map(({ label, href }) => <a key={label} href={href} target="_blank" rel="noreferrer">{label}</a>)}</div>
         </div>
       </div>
 
-      <section className="hero" id="top">
-        <div className="hero-image-wrap" aria-hidden="true"><img className="hero-image" src={assets.hero} alt="" /></div>
+      <section className="hero" id="top" style={{ backgroundImage: `linear-gradient(90deg, #17120f 4%, rgb(23 18 15 / 92%) 34%, rgb(23 18 15 / 38%) 74%, rgb(23 18 15 / 64%)), linear-gradient(0deg, #17120f 2%, transparent 37%), url("${assets.hero}")` }}>
         <div className="hero-rail hero-rail--left" aria-hidden="true"><span>001</span><i /><span>DH</span></div>
         <div className="hero-copy">
           <p className="section-kicker"><span className="pulse-square" /> {c.heroEyebrow}</p>
