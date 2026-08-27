@@ -207,6 +207,17 @@ export default function Home() {
 
   return (
     <main className={`signal-shell ${language === "ja" ? "is-japanese" : ""}`}>
+      <svg className="portrait-alpha-defs" aria-hidden="true" focusable="false">
+        <defs>
+          <filter id="portrait-alpha-mask" colorInterpolationFilters="sRGB">
+            <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -0.333 -0.333 -0.333 0 1" result="inverseLuminance" />
+            <feComponentTransfer in="inverseLuminance" result="portraitAlpha">
+              <feFuncA type="table" tableValues="0 0 0.25 0.9 1" />
+            </feComponentTransfer>
+            <feComposite in="SourceGraphic" in2="portraitAlpha" operator="in" />
+          </filter>
+        </defs>
+      </svg>
       {!booted && (
         <section className="boot-screen" aria-label="Midnight Signal introduction">
           <div className="boot-grain" />
