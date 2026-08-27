@@ -18,7 +18,7 @@ import {
 type Language = "en" | "ja";
 
 const assets = {
-  hero: "/manus-storage/nayeem-midnight-hero_e7fd2756.png",
+  hero: "/manus-storage/nayeem-red-mecha-hero_7f623215.png",
   mark: "/manus-storage/nayeem-pixel-portrait-hat-mark_9a411193.png",
 };
 
@@ -261,7 +261,7 @@ export default function Home() {
         </div>
       </div>
 
-      <section className="hero" id="top" style={{ backgroundImage: `linear-gradient(90deg, #17120f 4%, rgb(23 18 15 / 92%) 34%, rgb(23 18 15 / 38%) 74%, rgb(23 18 15 / 64%)), linear-gradient(0deg, #17120f 2%, transparent 37%), url("${assets.hero}")` }}>
+      <section className="hero" id="top" style={{ backgroundImage: `linear-gradient(90deg, #130b0b 0%, rgb(19 11 12 / 96%) 36%, rgb(19 11 12 / 62%) 55%, rgb(19 11 12 / 14%) 78%, rgb(19 11 12 / 54%) 100%), linear-gradient(0deg, #17120f 2%, transparent 40%), url("${assets.hero}")` }}>
         <div className="hero-rail hero-rail--left" aria-hidden="true"><span>001</span><i /><span>DH</span></div>
         <div className="hero-copy">
           <p className="section-kicker"><span className="pulse-square" /> {c.heroEyebrow}</p>

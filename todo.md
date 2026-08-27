@@ -16,4 +16,5 @@
 - [x] Add the supplied Arc Studio, Beat of Dhaka, and Kintsugi Bangladesh logos to their venture cards.
 - [x] Remove the added Arc Studio and Beat of Dhaka color panels and white-corner artifact.
 - [x] Present Kintsugi Bangladesh as a clean circular logo and add space between all venture logos.
+- [x] Replace the hero background with the supplied red anime-mecha artwork and preserve text readability.
 - [ ] Save a final checkpoint and deliver the corrected version.
