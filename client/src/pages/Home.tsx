@@ -33,6 +33,7 @@ const socials = [
   { label: "Instagram", href: "https://www.instagram.com/nayeem__kun/", icon: Instagram },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/nayeem-002d/", icon: Linkedin },
   { label: "Facebook", href: "https://www.facebook.com/Nayeem.sus", icon: MoveUpRight },
+  { label: "Creator Page", href: "https://www.facebook.com/naymur911", icon: MoveUpRight },
 ];
 
 const ventures = [
@@ -75,16 +76,17 @@ const copy = {
     heroEyebrow: "TRANSMISSION 01 · DHAKA, BD",
     heroTitle: ["I BUILD", "WORLDS", "PEOPLE", "REMEMBER."],
     heroNote: "Creative marketer. Content creator. Entrepreneur.",
-    heroDetail: "Founder-led ideas, culture-led communities, and stories with a signal.",
+    heroDetail: "Founder & Producer at Arc Studio. Chairperson of Beat of Dhaka. Founder & CEO of Kintsugi Bangladesh.",
     scroll: "SCROLL TO EXPLORE",
     missionLabel: "THE SIGNAL",
     missionTitle: "Not here to fill a screen.",
     missionCopy:
-      "I turn curiosity into things people can enter: studios, communities, campaigns, and future chapters.",
+      "I am Nayeem—a professional marketer, part-time content creator, and entrepreneur from Dhaka. I turn curiosity into studios, communities, campaigns, and stories people can enter.",
     nowLabel: "CURRENT FREQUENCY",
-    nowOne: "Growing creative worlds",
-    nowTwo: "Finding underrated voices",
-    nowThree: "Planning the next Japan chapter",
+    nowOne: "Leading Arc Studio Production",
+    nowTwo: "Championing local creators through Beat of Dhaka",
+    nowThree: "Growing Kintsugi Bangladesh",
+    profileFacts: [["NAME", "NAYEEM"], ["BORN", "06 FEB 2006"], ["HOME", "DHAKA, BANGLADESH"], ["MODE", "MARKETER / CREATOR / ENTREPRENEUR"]],
     venturesLabel: "VENTURES / LIVE LINKS",
     venturesTitle: "Three ideas in motion.",
     venturesCopy:
@@ -95,10 +97,15 @@ const copy = {
     notes: [
       ["CURIOUS", "I explore first, then make meaning from what I find."],
       ["ROMANTIC", "I believe small details can carry a whole feeling."],
+      ["FUN", "A little play makes the work—and the process—better."],
       ["PRECISION-DRIVEN", "Good enough is a draft. I keep going."],
     ],
     favoritesLabel: "OFFLINE INVENTORY",
     favorites: ["Anime & manga", "Late-night ideas", "Exploring", "Cake"],
+    animeLabel: "INSPIRATION LOG / 02",
+    animeTitle: "Stories that teach me to build with feeling.",
+    animeCopy: "Darling in the Franxx, One Piece, Evangelion, Nana, and Monster stay in my creative orbit. Zero Two is the character I return to most.",
+    animeFavorites: ["Darling in the Franxx", "One Piece", "Evangelion", "Nana", "Monster", "ZERO TWO"],
     contactLabel: "DIRECT LINE",
     contactTitle: "Have an idea worth entering?",
     contactCopy: "Write to me. I read every meaningful message.",
@@ -131,16 +138,17 @@ const copy = {
     heroEyebrow: "TRANSMISSION 01 · DHAKA, BD",
     heroTitle: ["記憶に", "残る世界を", "つくって", "います。"],
     heroNote: "クリエイティブマーケター。コンテンツ制作者。起業家。",
-    heroDetail: "創業者のアイデア、カルチャーのあるコミュニティ、そして物語にシグナルを。",
+    heroDetail: "Arc StudioのFounder & Producer。Beat of DhakaのChairperson。Kintsugi BangladeshのFounder & CEO。",
     scroll: "SCROLL TO EXPLORE",
     missionLabel: "THE SIGNAL",
     missionTitle: "画面を埋めるために、ここにいるのではない。",
     missionCopy:
-      "好奇心を、人が入り込めるものへ変えていきます。スタジオ、コミュニティ、キャンペーン、そして次の章へ。",
+      "私はダッカ出身のプロフェッショナルマーケター、パートタイムのコンテンツ制作者、そして起業家であるナイームです。好奇心を、人が入り込めるスタジオ、コミュニティ、キャンペーン、物語へ変えていきます。",
     nowLabel: "CURRENT FREQUENCY",
-    nowOne: "クリエイティブな世界を育てる",
-    nowTwo: "まだ知られていない声を見つける",
-    nowThree: "日本での次の章を準備する",
+    nowOne: "Arc Studio Productionを率いる",
+    nowTwo: "Beat of Dhakaで地元のクリエイターを応援する",
+    nowThree: "Kintsugi Bangladeshを育てる",
+    profileFacts: [["NAME", "NAYEEM"], ["BORN", "2006年2月6日"], ["HOME", "DHAKA, BANGLADESH"], ["MODE", "MARKETER / CREATOR / ENTREPRENEUR"]],
     venturesLabel: "VENTURES / LIVE LINKS",
     venturesTitle: "動き続ける、三つのアイデア。",
     venturesCopy:
@@ -151,10 +159,15 @@ const copy = {
     notes: [
       ["好奇心", "まず探索し、見つけたものに意味を与えます。"],
       ["ROMANTIC", "小さなディテールには、ひとつの感情を運ぶ力があると思う。"],
+      ["FUN", "少しの遊び心が、作品も制作過程も良くします。"],
       ["こだわり", "「これでいい」は下書き。もっと先へ進みます。"],
     ],
     favoritesLabel: "OFFLINE INVENTORY",
     favorites: ["アニメとマンガ", "深夜のアイデア", "探索", "ケーキ"],
+    animeLabel: "INSPIRATION LOG / 02",
+    animeTitle: "感情を持って創ることを教えてくれた物語。",
+    animeCopy: "Darling in the Franxx、One Piece、Evangelion、Nana、Monsterは、いつも僕の創作の軌道にあります。最も心に残るキャラクターはZero Twoです。",
+    animeFavorites: ["Darling in the Franxx", "One Piece", "Evangelion", "Nana", "Monster", "ZERO TWO"],
     contactLabel: "DIRECT LINE",
     contactTitle: "入りたくなるアイデアがありますか？",
     contactCopy: "メッセージを送ってください。意味のある言葉は、すべて読みます。",
@@ -281,6 +294,7 @@ export default function Home() {
           <p className="section-kicker">{c.missionLabel}</p>
           <h2>{c.missionTitle}</h2>
           <p className="lede">{c.missionCopy}</p>
+          <div className="profile-facts" aria-label="Nayeem profile facts">{c.profileFacts.map(([label, value]) => <div className="profile-fact" key={label}><span>{label}</span><strong>{value}</strong></div>)}</div>
         </div>
         <div className="frequency-card">
           <div className="frequency-card__head"><span>{c.nowLabel}</span><span className="live-dot" /> LIVE</div>
@@ -320,6 +334,12 @@ export default function Home() {
           {c.notes.map(([title, description], index) => <article className="note-card" key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{description}</p></article>)}
         </div>
         <div className="inventory"><p>{c.favoritesLabel}</p><div>{c.favorites.map((favorite) => <span key={favorite}>{favorite}</span>)}</div></div>
+        <div className="anime-signal">
+          <p className="section-kicker">{c.animeLabel}</p>
+          <h3>{c.animeTitle}</h3>
+          <p>{c.animeCopy}</p>
+          <div>{c.animeFavorites.map((title) => <span key={title}>{title}</span>)}</div>
+        </div>
       </section>
 
       <section className="contact-section" id="contact">

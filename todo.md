@@ -20,4 +20,6 @@
 - [x] Replace the intro portrait-and-hat mark with the supplied transparent red pixel-car graphic.
 - [x] Render Beat of Dhaka as white lettering on a red rounded-square brand tile.
 - [x] Replace the Arc Studio venture logo with the newly supplied Arc Studio image.
+- [x] Increase Arc Studio's visible logo scale and reduce Beat of Dhaka's tile size for balanced ventures branding.
+- [x] Audit every current section against Nayeem's supplied profile and add missing authentic details, links, interests, and anime influences.
 - [ ] Save a final checkpoint and deliver the corrected version.
