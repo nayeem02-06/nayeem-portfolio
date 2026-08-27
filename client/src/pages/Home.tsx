@@ -19,11 +19,12 @@ type Language = "en" | "ja";
 
 const assets = {
   hero: "/manus-storage/nayeem-red-mecha-hero_7f623215.png",
+  introCar: "/manus-storage/nayeem-pixel-car_5fa4f2ea.png",
   mark: "/manus-storage/nayeem-pixel-portrait-hat-mark_9a411193.png",
 };
 
 const ventureLogos = [
-  { name: "Arc Studio Production", source: "/manus-storage/arc-studio-logo-transparent_aaebabf5.png", tone: "arc" },
+  { name: "Arc Studio Production", source: "/manus-storage/arc-studio-logo-new_fdbde81f.png", tone: "arc" },
   { name: "Beat of Dhaka", source: "/manus-storage/beat-of-dhaka-logo-transparent_a088e06e.png", tone: "beat" },
   { name: "Kintsugi Bangladesh", source: "/manus-storage/kintsugi-bangladesh-logo_3849f344.png", tone: "kintsugi" },
 ];
@@ -226,7 +227,7 @@ export default function Home() {
           <div className="boot-grain" />
           <div className="boot-content">
             <div className="boot-status"><span className="status-dot" /> {c.bootKicker}</div>
-            <img className="boot-mark" src={assets.mark} alt="" />
+            <img className="boot-mark boot-mark--car" src={assets.introCar} alt="Pixel-art red sports car" />
             <h1 className="boot-title">{c.bootTitle.split("\n").map((line) => <span key={line}>{line}</span>)}</h1>
             <p className="boot-copy"><span>{c.bootCopy}</span><span>{c.bootPrompt}</span></p>
             <button className="pixel-button pixel-button--hero" type="button" onClick={enterSite}>

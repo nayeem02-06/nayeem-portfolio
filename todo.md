@@ -17,4 +17,7 @@
 - [x] Remove the added Arc Studio and Beat of Dhaka color panels and white-corner artifact.
 - [x] Present Kintsugi Bangladesh as a clean circular logo and add space between all venture logos.
 - [x] Replace the hero background with the supplied red anime-mecha artwork and preserve text readability.
+- [x] Replace the intro portrait-and-hat mark with the supplied transparent red pixel-car graphic.
+- [x] Render Beat of Dhaka as white lettering on a red rounded-square brand tile.
+- [x] Replace the Arc Studio venture logo with the newly supplied Arc Studio image.
 - [ ] Save a final checkpoint and deliver the corrected version.
