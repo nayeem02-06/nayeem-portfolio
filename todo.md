@@ -22,4 +22,11 @@
 - [x] Replace the Arc Studio venture logo with the newly supplied Arc Studio image.
 - [x] Increase Arc Studio's visible logo scale and reduce Beat of Dhaka's tile size for balanced ventures branding.
 - [x] Audit every current section against Nayeem's supplied profile and add missing authentic details, links, interests, and anime influences.
+- [x] Enlarge the Beat of Dhaka lettering within its red rounded tile while retaining edge padding.
+- [x] Animate the pixel car to drive into START JOURNEY and transition into the portfolio with reduced-motion support.
+- [x] Add supplied Favourite Anime posters as responsive, lazy-loaded cards with a Zero Two detail.
+- [x] Replace Signal and Ventures navigation links with Arc Studio and Beat of Dhaka page links.
+- [x] Create an Arc Studio page with authentic identity, work-in-progress, what-we-do, and contact information in yellow and brown.
+- [x] Create a Beat of Dhaka page with authentic identity, work-in-progress, what-we-do, and contact information in red and white.
+- [x] Replace the footer's generic Facebook arrow with a Facebook logo icon.
 - [ ] Save a final checkpoint and deliver the corrected version.

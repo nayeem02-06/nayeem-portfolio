@@ -6,6 +6,7 @@ import { useState, type MouseEvent as ReactMouseEvent } from "react";
 import {
   ArrowDown,
   ArrowUpRight,
+  Facebook,
   Instagram,
   Linkedin,
   Mail,
@@ -29,11 +30,19 @@ const ventureLogos = [
   { name: "Kintsugi Bangladesh", source: "/manus-storage/kintsugi-bangladesh-logo_3849f344.png", tone: "kintsugi" },
 ];
 
+const animeCards = [
+  { title: "Darling in the Franxx", label: "FAVOURITE ANIME / 01", source: "/manus-storage/darling-in-the-franxx-poster_43f37f5b.png", alt: "Darling in the Franxx poster" },
+  { title: "One Piece", label: "FAVOURITE ANIME / 02", source: "/manus-storage/one-piece-poster_158c1c80.png", alt: "One Piece poster" },
+  { title: "Evangelion", label: "FAVOURITE ANIME / 03", source: "/manus-storage/evangelion-poster_4c1d7963.png", alt: "Neon Genesis Evangelion poster" },
+  { title: "Nana", label: "FAVOURITE ANIME / 04", source: "/manus-storage/nana-poster_ed8f8a8a.png", alt: "Nana poster" },
+  { title: "Zero Two", label: "FAVOURITE CHARACTER", source: "/manus-storage/zero-two-portrait_cedbaca1.png", alt: "Zero Two from Darling in the Franxx" },
+];
+
 const socials = [
   { label: "Instagram", href: "https://www.instagram.com/nayeem__kun/", icon: Instagram },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/nayeem-002d/", icon: Linkedin },
-  { label: "Facebook", href: "https://www.facebook.com/Nayeem.sus", icon: MoveUpRight },
-  { label: "Creator Page", href: "https://www.facebook.com/naymur911", icon: MoveUpRight },
+  { label: "Facebook", href: "https://www.facebook.com/Nayeem.sus", icon: Facebook },
+  { label: "Creator Page", href: "https://www.facebook.com/naymur911", icon: Facebook },
 ];
 
 const ventures = [
@@ -62,8 +71,8 @@ const copy = {
     language: "日本語",
     menu: "MENU",
     nav: [
-      ["Signal", "#signal"],
-      ["Ventures", "#ventures"],
+      ["Arc Studio", "/arc-studio"],
+      ["Beat of Dhaka", "/beat-of-dhaka"],
       ["Notes", "#notes"],
       ["Contact", "#contact"],
     ],
@@ -124,8 +133,8 @@ const copy = {
     language: "ENGLISH",
     menu: "メニュー",
     nav: [
-      ["SIGNAL", "#signal"],
-      ["活動", "#ventures"],
+      ["ARC STUDIO", "/arc-studio"],
+      ["BEAT OF DHAKA", "/beat-of-dhaka"],
       ["NOTE", "#notes"],
       ["連絡", "#contact"],
     ],
@@ -187,15 +196,29 @@ const copy = {
 export default function Home() {
   const [language, setLanguage] = useState<Language>("en");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [entryAnimating, setEntryAnimating] = useState(false);
   const [booted, setBooted] = useState(() => {
     const params = new URLSearchParams(window.location.search);
-    return params.get("preview") === "main" || window.sessionStorage.getItem("nayeem-signal-entered") === "true";
+    const preview = params.get("preview");
+    if (preview === "entry") return false;
+    return preview === "main" || window.sessionStorage.getItem("nayeem-signal-entered") === "true";
   });
   const c = copy[language];
 
-  const enterSite = () => {
+  const finishEntry = () => {
     window.sessionStorage.setItem("nayeem-signal-entered", "true");
     setBooted(true);
+  };
+
+  const enterSite = () => {
+    if (entryAnimating) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion) {
+      finishEntry();
+      return;
+    }
+    setEntryAnimating(true);
+    window.setTimeout(finishEntry, 940);
   };
 
   const changeLanguage = () => {
@@ -236,17 +259,19 @@ export default function Home() {
         </defs>
       </svg>
       {!booted && (
-        <section className="boot-screen" aria-label="Midnight Signal introduction">
+        <section className={`boot-screen ${entryAnimating ? "boot-screen--exit" : ""}`} aria-label="Midnight Signal introduction">
           <div className="boot-grain" />
           <div className="boot-content">
             <div className="boot-status"><span className="status-dot" /> {c.bootKicker}</div>
             <img className="boot-mark boot-mark--car" src={assets.introCar} alt="Pixel-art red sports car" />
             <h1 className="boot-title">{c.bootTitle.split("\n").map((line) => <span key={line}>{line}</span>)}</h1>
             <p className="boot-copy"><span>{c.bootCopy}</span><span>{c.bootPrompt}</span></p>
-            <button className="pixel-button pixel-button--hero" type="button" onClick={enterSite}>
+            <button className={`pixel-button pixel-button--hero ${entryAnimating ? "pixel-button--hit" : ""}`} type="button" onClick={enterSite} disabled={entryAnimating}>
+              <img className="boot-crash-car" src={assets.introCar} alt="" aria-hidden="true" />
+              <span className="boot-impact" aria-hidden="true" />
               <span>{c.enter}</span><ArrowUpRight size={16} strokeWidth={2.5} />
             </button>
-            <button className="boot-skip" type="button" onClick={enterSite}>{c.skip}</button>
+            <button className="boot-skip" type="button" onClick={finishEntry} disabled={entryAnimating}>{c.skip}</button>
           </div>
           <div className="boot-corners" aria-hidden="true"><i /><i /><i /><i /></div>
         </section>
@@ -335,10 +360,18 @@ export default function Home() {
         </div>
         <div className="inventory"><p>{c.favoritesLabel}</p><div>{c.favorites.map((favorite) => <span key={favorite}>{favorite}</span>)}</div></div>
         <div className="anime-signal">
-          <p className="section-kicker">{c.animeLabel}</p>
-          <h3>{c.animeTitle}</h3>
-          <p>{c.animeCopy}</p>
-          <div>{c.animeFavorites.map((title) => <span key={title}>{title}</span>)}</div>
+          <div className="anime-signal__intro">
+            <p className="section-kicker">{c.animeLabel}</p>
+            <h3>{c.animeTitle}</h3>
+            <p>{c.animeCopy}</p>
+          </div>
+          <div className="anime-gallery" aria-label="Nayeem's favourite anime and character posters">
+            {animeCards.map((anime) => <article className="anime-card" key={anime.title}>
+              <img src={anime.source} alt={anime.alt} loading="lazy" decoding="async" />
+              <div className="anime-card__caption"><span>{anime.label}</span><h4>{anime.title}</h4></div>
+            </article>)}
+          </div>
+          <div className="anime-tags">{c.animeFavorites.map((title) => <span key={title}>{title}</span>)}</div>
         </div>
       </section>
 
