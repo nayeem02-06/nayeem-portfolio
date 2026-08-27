@@ -10,6 +10,7 @@ import {
   Linkedin,
   Mail,
   Menu,
+  MessageCircle,
   MoveUpRight,
   X,
 } from "lucide-react";
@@ -18,10 +19,14 @@ type Language = "en" | "ja";
 
 const assets = {
   hero: "/manus-storage/nayeem-midnight-hero_e7fd2756.png",
-  ventures: "/manus-storage/nayeem-ventures-scene_d8d89493.png",
-  japan: "/manus-storage/nayeem-japan-postcard_55ea60de.png",
-  mark: "/manus-storage/nayeem-pixel-head-true-alpha_3d54bd78.png",
+  mark: "/manus-storage/nayeem-pixel-portrait-hat-mark_9a411193.png",
 };
+
+const ventureLogos = [
+  { name: "Arc Studio Production", source: "/manus-storage/arc-studio-logo-transparent_aaebabf5.png", tone: "arc" },
+  { name: "Beat of Dhaka", source: "/manus-storage/beat-of-dhaka-logo-transparent_a088e06e.png", tone: "beat" },
+  { name: "Kintsugi Bangladesh", source: "/manus-storage/kintsugi-bangladesh-logo_3849f344.png", tone: "kintsugi" },
+];
 
 const socials = [
   { label: "Instagram", href: "https://www.instagram.com/nayeem__kun/", icon: Instagram },
@@ -93,14 +98,11 @@ const copy = {
     ],
     favoritesLabel: "OFFLINE INVENTORY",
     favorites: ["Anime & manga", "Late-night ideas", "Exploring", "Cake"],
-    nextKicker: "NEXT CHAPTER / IN TRANSMISSION",
-    nextTitle: "Japan is on the horizon.",
-    nextCopy:
-      "A new place, a future YouTube channel, and more stories waiting to become real. The signal stays open.",
     contactLabel: "DIRECT LINE",
     contactTitle: "Have an idea worth entering?",
     contactCopy: "Write to me. I read every meaningful message.",
     email: "SEND A SIGNAL",
+    whatsapp: "MESSAGE ON WHATSAPP",
     footer: "NAYEEM / ALL SIGNALS ACTIVE",
     role: "CREATIVE MARKETER · FOUNDER",
     available: "OPEN TO A GOOD CONVERSATION",
@@ -152,14 +154,11 @@ const copy = {
     ],
     favoritesLabel: "OFFLINE INVENTORY",
     favorites: ["アニメとマンガ", "深夜のアイデア", "探索", "ケーキ"],
-    nextKicker: "NEXT CHAPTER / IN TRANSMISSION",
-    nextTitle: "日本が、地平線にある。",
-    nextCopy:
-      "新しい場所、未来のYouTubeチャンネル、そして現実になるのを待つ物語。シグナルは開いたままです。",
     contactLabel: "DIRECT LINE",
     contactTitle: "入りたくなるアイデアがありますか？",
     contactCopy: "メッセージを送ってください。意味のある言葉は、すべて読みます。",
     email: "SEND A SIGNAL",
+    whatsapp: "WHATSAPPで連絡",
     footer: "NAYEEM / ALL SIGNALS ACTIVE",
     role: "CREATIVE MARKETER · FOUNDER",
     available: "OPEN TO A GOOD CONVERSATION",
@@ -215,6 +214,10 @@ export default function Home() {
               <feFuncA type="table" tableValues="0 0 0.25 0.9 1" />
             </feComponentTransfer>
             <feComposite in="SourceGraphic" in2="portraitAlpha" operator="in" />
+          </filter>
+          <filter id="venture-color-alpha" colorInterpolationFilters="sRGB">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  1 0 -1 0 0" result="colorSignal" />
+            <feComposite in="SourceGraphic" in2="colorSignal" operator="in" />
           </filter>
         </defs>
       </svg>
@@ -289,7 +292,9 @@ export default function Home() {
 
       <section className="ventures-section section-frame" id="ventures">
         <div className="section-rail" aria-hidden="true"><span>02</span><i /></div>
-        <div className="venture-art"><img src={assets.ventures} alt="" loading="lazy" /><div className="venture-art__scan" /></div>
+        <div className="venture-art venture-art--logos" aria-label="Venture brand logos">
+          {ventureLogos.map((logo) => <div className={`venture-logo venture-logo--${logo.tone}`} key={logo.name}><img src={logo.source} alt={`${logo.name} logo`} loading="lazy" decoding="async" /></div>)}
+        </div>
         <div className="ventures-copy">
           <p className="section-kicker">{c.venturesLabel}</p>
           <h2>{c.venturesTitle}</h2>
@@ -316,23 +321,15 @@ export default function Home() {
         <div className="inventory"><p>{c.favoritesLabel}</p><div>{c.favorites.map((favorite) => <span key={favorite}>{favorite}</span>)}</div></div>
       </section>
 
-      <section className="next-section section-frame">
-        <div className="section-rail" aria-hidden="true"><span>04</span><i /></div>
-        <div className="next-image"><img src={assets.japan} alt="A pixel-art traveler awaiting a train at night" loading="lazy" /></div>
-        <div className="next-copy">
-          <p className="section-kicker">{c.nextKicker}</p>
-          <h2>{c.nextTitle}</h2>
-          <p className="lede">{c.nextCopy}</p>
-          <div className="next-code"><span>JP</span><i /><span>00:02</span></div>
-        </div>
-      </section>
-
       <section className="contact-section" id="contact">
         <div className="contact-grid" aria-hidden="true" />
         <p className="section-kicker">{c.contactLabel}</p>
         <h2>{c.contactTitle}</h2>
         <p>{c.contactCopy}</p>
-        <a className="pixel-button pixel-button--contact" href="mailto:nayeem002d@gmail.com"><span>{c.email}</span><Mail size={17} /></a>
+        <div className="contact-actions">
+          <a className="pixel-button pixel-button--contact" href="https://mail.google.com/mail/?view=cm&fs=1&to=nayeem002d%40gmail.com&su=Portfolio%20enquiry&body=Hi%20Nayeem%2C%0A%0A" target="_blank" rel="noreferrer" aria-label="Compose an email to Nayeem in Gmail"><span>{c.email}</span><Mail size={17} /></a>
+          <a className="pixel-button pixel-button--whatsapp" href="https://wa.me/8801609223775?text=Hi%20Nayeem%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect." target="_blank" rel="noreferrer" aria-label="Message Nayeem on WhatsApp"><span>{c.whatsapp}</span><MessageCircle size={17} /></a>
+        </div>
         <div className="contact-meta"><span>{c.role}</span><span><i className="live-dot" /> {c.available}</span></div>
       </section>
 
