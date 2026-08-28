@@ -5,6 +5,7 @@
 import { ArrowUpRight, Mail, MessageCircle, Sparkles } from "lucide-react";
 import { useState } from "react";
 import GlobalHeader from "../components/GlobalHeader";
+import { sitePath } from "../lib/sitePaths";
 
 type Locale = "en" | "ja";
 type VentureKey = "arc" | "beat";
@@ -217,9 +218,9 @@ export default function VenturePage({ venture }: { venture: VentureKey }) {
         </div>
       </section>
       <footer className="venture-footer">
-        <a href="/">NAYEEM<span>.</span></a>
+        <a href={sitePath("/")}>NAYEEM<span>.</span></a>
         <p>{config.name}</p>
-        <nav aria-label="Venture links"><a href="/arc-studio">ARC STUDIO</a><a href="/beat-of-dhaka">BEAT OF DHAKA</a><a href="https://discord.gg/MRyNmhHqa2" target="_blank" rel="noreferrer">DISCORD <MessageCircle size={12} /></a></nav>
+        <nav aria-label="Venture links"><a href={sitePath("/arc-studio")}>ARC STUDIO</a><a href={sitePath("/beat-of-dhaka")}>BEAT OF DHAKA</a><a href="https://discord.gg/MRyNmhHqa2" target="_blank" rel="noreferrer">DISCORD <MessageCircle size={12} /></a></nav>
       </footer>
     </main>
   );

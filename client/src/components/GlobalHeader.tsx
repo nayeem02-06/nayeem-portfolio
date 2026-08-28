@@ -4,6 +4,7 @@
  */
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { sitePath } from "../lib/sitePaths";
 
 type Locale = "en" | "ja";
 
@@ -25,11 +26,11 @@ export default function GlobalHeader({
 
   return <>
     <header className="site-header global-header">
-      <a className="brand-lockup" href="/" aria-label="Nayeem home"><span>NAYEEM<span className="brand-mark-dot">.</span></span></a>
+      <a className="brand-lockup" href={sitePath("/")} aria-label="Nayeem home"><span>NAYEEM<span className="brand-mark-dot">.</span></span></a>
       <nav className="desktop-nav" aria-label="Primary navigation">
-        <a href="/arc-studio" aria-current={active === "arc" ? "page" : undefined}>{labels.arc}</a>
-        <a href="/beat-of-dhaka" aria-current={active === "beat" ? "page" : undefined}>{labels.beat}</a>
-        <a href="/#contact">{labels.contact}</a>
+        <a href={sitePath("/arc-studio")} aria-current={active === "arc" ? "page" : undefined}>{labels.arc}</a>
+        <a href={sitePath("/beat-of-dhaka")} aria-current={active === "beat" ? "page" : undefined}>{labels.beat}</a>
+        <a href={`${sitePath("/")}#contact`}>{labels.contact}</a>
       </nav>
       <div className="header-actions">
         <button className="language-button" onClick={onLanguageChange} type="button" aria-label="Change language">{labels.language}</button>
@@ -38,9 +39,9 @@ export default function GlobalHeader({
     </header>
     <div className={`mobile-menu ${menuOpen ? "mobile-menu--open" : ""}`} aria-hidden={!menuOpen}>
       <div className="mobile-menu__inner">
-        <a href="/arc-studio" onClick={closeMenu} aria-current={active === "arc" ? "page" : undefined}>{labels.arc}</a>
-        <a href="/beat-of-dhaka" onClick={closeMenu} aria-current={active === "beat" ? "page" : undefined}>{labels.beat}</a>
-        <a href="/#contact" onClick={closeMenu}>{labels.contact}</a>
+        <a href={sitePath("/arc-studio")} onClick={closeMenu} aria-current={active === "arc" ? "page" : undefined}>{labels.arc}</a>
+        <a href={sitePath("/beat-of-dhaka")} onClick={closeMenu} aria-current={active === "beat" ? "page" : undefined}>{labels.beat}</a>
+        <a href={`${sitePath("/")}#contact`} onClick={closeMenu}>{labels.contact}</a>
       </div>
     </div>
   </>;

@@ -4,7 +4,7 @@
  */
 import NotFound from "@/pages/NotFound";
 import { lazy, Suspense } from "react";
-import { Route, Switch } from "wouter";
+import { Route, Router as WouterRouter, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import Home from "./pages/Home";
 
@@ -16,14 +16,17 @@ function VentureLoading() {
 }
 
 function Router() {
+  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   return (
-    <Switch>
+    <WouterRouter base={base}>
+      <Switch>
       <Route path="/" component={Home} />
       <Route path="/arc-studio"><Suspense fallback={<VentureLoading />}><ArcStudio /></Suspense></Route>
       <Route path="/beat-of-dhaka"><Suspense fallback={<VentureLoading />}><BeatOfDhaka /></Suspense></Route>
       <Route path="/404" component={NotFound} />
-      <Route component={NotFound} />
-    </Switch>
+        <Route component={NotFound} />
+      </Switch>
+    </WouterRouter>
   );
 }
 

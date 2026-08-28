@@ -3,6 +3,7 @@
  * Use compact evidence, ember signals, pixel wayfinding, and mobile-first touch targets.
  */
 import { useEffect, useState, type MouseEvent as ReactMouseEvent } from "react";
+import { sitePath } from "../lib/sitePaths";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -297,7 +298,7 @@ export default function Home() {
           <span>NAYEEM<span className="brand-mark-dot">.</span></span>
         </a>
         <nav className="desktop-nav" aria-label="Primary navigation">
-          {c.nav.map(([label, href]) => <a key={href} href={href} onClick={(event) => scrollToSection(event, href)}>{label}</a>)}
+          {c.nav.map(([label, href]) => <a key={href} href={href.startsWith("#") ? href : sitePath(href)} onClick={(event) => scrollToSection(event, href)}>{label}</a>)}
         </nav>
         <div className="header-actions">
           <button className="language-button" onClick={changeLanguage} type="button" aria-label="Change language">{c.language}</button>
@@ -310,7 +311,7 @@ export default function Home() {
 
       <div className={`mobile-menu ${menuOpen ? "mobile-menu--open" : ""}`} aria-hidden={!menuOpen}>
         <div className="mobile-menu__inner">
-          {c.nav.map(([label, href], index) => <a key={href} style={{ "--menu-index": index } as React.CSSProperties} href={href} onClick={(event) => scrollToSection(event, href)}>{label}<ArrowUpRight size={18} /></a>)}
+          {c.nav.map(([label, href], index) => <a key={href} style={{ "--menu-index": index } as React.CSSProperties} href={href.startsWith("#") ? href : sitePath(href)} onClick={(event) => scrollToSection(event, href)}>{label}<ArrowUpRight size={18} /></a>)}
           <div className="mobile-menu__social">{socials.map(({ label, href }) => <a key={label} href={href} target="_blank" rel="noreferrer">{label}</a>)}</div>
         </div>
       </div>
