@@ -163,6 +163,7 @@ export default function VenturePage({ venture }: { venture: VentureKey }) {
   const [language, setLanguage] = useState<Locale>("en");
   const config = ventures[venture];
   const c = config.copy[language];
+  const ventureEmail = venture === "arc" ? "arcstudioproduction02@gmail.com" : "beatofdhaka@gmail.com";
 
   return (
     <main className={`venture-page venture-page--${venture} ${language === "ja" ? "venture-page--ja" : ""}`}>
@@ -212,7 +213,7 @@ export default function VenturePage({ venture }: { venture: VentureKey }) {
         <p>{c.connectCopy}</p>
         <div className="venture-actions">
           <a href={config.href} target="_blank" rel="noreferrer"><span>{c.visit}</span><ArrowUpRight size={18} /></a>
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=nayeem002d%40gmail.com&su=Portfolio%20enquiry&body=Hi%20Nayeem%2C%0A%0A" target="_blank" rel="noreferrer"><span>{c.email}</span><Mail size={17} /></a>
+          <a href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(ventureEmail)}&su=${encodeURIComponent(`${config.name} enquiry`)}&body=Hi%20Nayeem%2C%0A%0A`} target="_blank" rel="noreferrer"><span>{c.email}</span><Mail size={17} /></a>
         </div>
       </section>
       <footer className="venture-footer">

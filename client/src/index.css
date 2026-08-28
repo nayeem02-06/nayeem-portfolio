@@ -100,14 +100,10 @@ button { border: 0; cursor: pointer; }
 
 @media (max-width: 639px) { .contact-actions { width: 100%; }.contact-actions .pixel-button { width: 100%; justify-content: center; } }
 
-@media (prefers-reduced-motion: no-preference) { .boot-mark { animation: soft-signal 1.8s var(--ease-in-out) infinite; }.pulse-square { animation: pulse 1.4s var(--ease-in-out) infinite; }.boot-screen--exit .boot-mark--car { animation: boot-car-clear .18s linear forwards; }.boot-screen--exit .boot-crash-car { animation: boot-car-drive .8s cubic-bezier(.18,.88,.17,1) forwards; }.pixel-button--hit { animation: button-strike .58s cubic-bezier(.22,.9,.2,1) .55s both; }.pixel-button--hit .boot-impact { animation: pixel-impact .33s steps(2, end) .64s both; }.boot-screen--exit .boot-copy, .boot-screen--exit .boot-title, .boot-screen--exit .boot-status, .boot-screen--exit .boot-skip { animation: boot-copy-out .34s var(--ease-out) .64s both; } }
+@media (prefers-reduced-motion: no-preference) { .boot-mark:not(.boot-mark--car) { animation: soft-signal 1.8s var(--ease-in-out) infinite; }.pulse-square { animation: pulse 1.4s var(--ease-in-out) infinite; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
 @keyframes soft-signal { 0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 0 transparent); } 50% { transform: translateY(-5px); filter: drop-shadow(0 0 9px rgb(240 107 60 / 45%)); } }
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
-@keyframes boot-car-clear { to { opacity: 0; transform: scale(.78); } }
-@keyframes boot-car-drive { 0% { opacity: 0; transform: translate(-190px, -108px) rotate(-6deg) scale(.82); } 12% { opacity: 1; } 68% { opacity: 1; transform: translate(190px, 35px) rotate(-2deg) scale(1); } 81% { opacity: 1; transform: translate(223px, 43px) rotate(1deg) scale(.98); } 100% { opacity: 0; transform: translate(278px, 51px) rotate(2deg) scale(.96); } }
-@keyframes button-strike { 0%, 58% { transform: none; } 72% { transform: translate(5px, 4px) scale(.96); box-shadow: 1px 1px 0 var(--ember); } 100% { transform: none; } }
-@keyframes pixel-impact { 0% { opacity: 0; transform: translate(-50%, -50%) scale(0); } 25% { opacity: 1; transform: translate(-50%, -50%) scale(1); } 100% { opacity: 0; transform: translate(-50%, -50%) scale(2.6); } }
 @keyframes boot-copy-out { to { opacity: 0; transform: translateY(-8px); } }
 @keyframes hero-clarify { from { opacity: .38; transform: scale(1.025); } to { opacity: 1; transform: scale(1); } }
 @keyframes rise { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: none; } }

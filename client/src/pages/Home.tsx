@@ -202,7 +202,6 @@ const copy = {
 export default function Home() {
   const [language, setLanguage] = useState<Language>("en");
   const [menuOpen, setMenuOpen] = useState(false);
-  const [entryAnimating, setEntryAnimating] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [booted, setBooted] = useState(() => {
     const params = new URLSearchParams(window.location.search);
@@ -235,17 +234,6 @@ export default function Home() {
   const finishEntry = () => {
     window.sessionStorage.setItem("nayeem-signal-entered", "true");
     setBooted(true);
-  };
-
-  const enterSite = () => {
-    if (entryAnimating) return;
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reducedMotion) {
-      finishEntry();
-      return;
-    }
-    setEntryAnimating(true);
-    window.setTimeout(finishEntry, 940);
   };
 
   const changeLanguage = () => {
@@ -286,24 +274,19 @@ export default function Home() {
         </defs>
       </svg>
       {!booted && (
-        <section className={`boot-screen ${entryAnimating ? "boot-screen--exit" : ""}`} aria-label="Midnight Signal introduction">
+        <section className="boot-screen" aria-label="Midnight Signal introduction">
           <div className="boot-grain" />
           <div className="boot-car-stage" aria-hidden="true">
-            <svg className="boot-road" viewBox="0 0 600 520" preserveAspectRatio="none">
-              <path d="M300 28 C95 94 106 266 238 387 C269 415 292 435 300 466" />
-              <path d="M300 28 C95 94 106 266 238 387 C269 415 292 435 300 466" />
-            </svg>
             <img className="boot-mark boot-mark--car" src={assets.introCar} alt="" />
           </div>
           <div className="boot-content">
             <div className="boot-status"><span className="status-dot" /> {c.bootKicker}</div>
             <h1 className="boot-title">{c.bootTitle.split("\n").map((line) => <span key={line}>{line}</span>)}</h1>
             <p className="boot-copy"><span>{c.bootCopy}</span><span>{c.bootPrompt}</span></p>
-            <button className={`pixel-button pixel-button--hero ${entryAnimating ? "pixel-button--hit" : ""}`} type="button" onClick={enterSite} disabled={entryAnimating}>
-              <span className="boot-impact" aria-hidden="true" />
+            <button className="pixel-button pixel-button--hero" type="button" onClick={finishEntry}>
               <span>{c.enter}</span><ArrowUpRight size={16} strokeWidth={2.5} />
             </button>
-            <button className="boot-skip" type="button" onClick={finishEntry} disabled={entryAnimating}>{c.skip}</button>
+            <button className="boot-skip" type="button" onClick={finishEntry}>{c.skip}</button>
           </div>
           <div className="boot-corners" aria-hidden="true"><i /><i /><i /><i /></div>
         </section>

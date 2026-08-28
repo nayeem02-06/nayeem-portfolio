@@ -46,3 +46,6 @@
 - [x] Tighten the Beat of Dhaka closing CTA and create a smoother, more intentional transition into its footer.
 - [x] Use one fixed NAYEEM top bar across the personal portfolio, Arc Studio, and Beat of Dhaka routes without covering page content.
 - [x] Verify the shared top bar remains usable on desktop and mobile before saving the navigation update.
+- [x] Use arcstudioproduction02@gmail.com only on the Arc Studio page.
+- [x] Use beatofdhaka@gmail.com only on the Beat of Dhaka page.
+- [x] Verify both Gmail compose links and preserve nayeem002d@gmail.com on the personal portfolio.
