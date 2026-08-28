@@ -294,7 +294,6 @@ export default function Home() {
 
       <header className="site-header">
         <a className="brand-lockup" href="#top" aria-label="Nayeem home">
-          <img src={assets.mark} alt="" />
           <span>NAYEEM<span className="brand-mark-dot">.</span></span>
         </a>
         <nav className="desktop-nav" aria-label="Primary navigation">

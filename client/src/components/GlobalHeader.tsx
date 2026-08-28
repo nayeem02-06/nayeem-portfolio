@@ -5,8 +5,6 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
-const mark = "/manus-storage/nayeem-pixel-portrait-hat-mark_9a411193.png";
-
 type Locale = "en" | "ja";
 
 export default function GlobalHeader({
@@ -27,7 +25,7 @@ export default function GlobalHeader({
 
   return <>
     <header className="site-header global-header">
-      <a className="brand-lockup" href="/" aria-label="Nayeem home"><img src={mark} alt="" /><span>NAYEEM<span className="brand-mark-dot">.</span></span></a>
+      <a className="brand-lockup" href="/" aria-label="Nayeem home"><span>NAYEEM<span className="brand-mark-dot">.</span></span></a>
       <nav className="desktop-nav" aria-label="Primary navigation">
         <a href="/arc-studio" aria-current={active === "arc" ? "page" : undefined}>{labels.arc}</a>
         <a href="/beat-of-dhaka" aria-current={active === "beat" ? "page" : undefined}>{labels.beat}</a>
