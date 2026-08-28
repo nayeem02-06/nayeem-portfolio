@@ -3,7 +3,7 @@
  * Use compact evidence, ember signals, pixel wayfinding, and mobile-first touch targets.
  */
 import { useEffect, useState, type MouseEvent as ReactMouseEvent } from "react";
-import { sitePath } from "../lib/sitePaths";
+import { assetPath, sitePath } from "../lib/sitePaths";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -25,23 +25,23 @@ function DiscordMark({ size = 17 }: { size?: number }) {
 }
 
 const assets = {
-  hero: "/manus-storage/nayeem-red-mecha-hero-optimized_f49925e7.webp",
-  introCar: "/manus-storage/nayeem-pixel-car_5fa4f2ea.png",
-  mark: "/manus-storage/nayeem-pixel-portrait-hat-mark_9a411193.png",
+  hero: assetPath("nayeem-red-mecha-hero-optimized.webp"),
+  introCar: assetPath("nayeem-pixel-car.png"),
+  mark: assetPath("nayeem-signal-mark.png"),
 };
 
 const ventureLogos = [
-  { name: "Arc Studio Production", source: "/manus-storage/arc-studio-logo-new_fdbde81f.png", tone: "arc" },
-  { name: "Beat of Dhaka", source: "/manus-storage/beat-of-dhaka-logo-transparent_a088e06e.png", tone: "beat" },
-  { name: "Kintsugi Bangladesh", source: "/manus-storage/kintsugi-bangladesh-logo_3849f344.png", tone: "kintsugi" },
+  { name: "Arc Studio Production", source: assetPath("arc-studio-logo-new.png"), tone: "arc" },
+  { name: "Beat of Dhaka", source: assetPath("beat-of-dhaka-logo-optimized.webp"), tone: "beat" },
+  { name: "Kintsugi Bangladesh", source: assetPath("kintsugi-bangladesh-logo.png"), tone: "kintsugi" },
 ];
 
 const animeCards = [
-  { title: "Darling in the Franxx", label: "FAVOURITE ANIME / 01", source: "/manus-storage/darling-in-the-franxx-poster-optimized_2ad6bae1.webp", alt: "Darling in the Franxx poster" },
-  { title: "One Piece", label: "FAVOURITE ANIME / 02", source: "/manus-storage/one-piece-poster-optimized_5de132db.webp", alt: "One Piece poster" },
-  { title: "Evangelion", label: "FAVOURITE ANIME / 03", source: "/manus-storage/evangelion-poster-optimized_8b848c9b.webp", alt: "Neon Genesis Evangelion poster" },
-  { title: "Nana", label: "FAVOURITE ANIME / 04", source: "/manus-storage/nana-poster-optimized_950029f5.webp", alt: "Nana poster" },
-  { title: "Zero Two", label: "FAVOURITE CHARACTER", source: "/manus-storage/zero-two-portrait-optimized_1bbce195.webp", alt: "Zero Two from Darling in the Franxx" },
+  { title: "Darling in the Franxx", label: "FAVOURITE ANIME / 01", source: assetPath("darling-in-the-franxx-poster-optimized.webp"), alt: "Darling in the Franxx poster" },
+  { title: "One Piece", label: "FAVOURITE ANIME / 02", source: assetPath("one-piece-poster-optimized.webp"), alt: "One Piece poster" },
+  { title: "Evangelion", label: "FAVOURITE ANIME / 03", source: assetPath("evangelion-poster-optimized.webp"), alt: "Neon Genesis Evangelion poster" },
+  { title: "Nana", label: "FAVOURITE ANIME / 04", source: assetPath("nana-poster-optimized.webp"), alt: "Nana poster" },
+  { title: "Zero Two", label: "FAVOURITE CHARACTER", source: assetPath("zero-two-portrait-optimized.webp"), alt: "Zero Two from Darling in the Franxx" },
 ];
 
 const socials = [

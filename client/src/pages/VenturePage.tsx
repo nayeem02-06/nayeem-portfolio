@@ -5,7 +5,7 @@
 import { ArrowUpRight, Mail, MessageCircle, Sparkles } from "lucide-react";
 import { useState } from "react";
 import GlobalHeader from "../components/GlobalHeader";
-import { sitePath } from "../lib/sitePaths";
+import { assetPath, sitePath } from "../lib/sitePaths";
 
 type Locale = "en" | "ja";
 type VentureKey = "arc" | "beat";
@@ -46,7 +46,7 @@ const ventures: Record<VentureKey, VentureConfig> = {
     name: "Arc Studio Production",
     shortName: "ARC STUDIO",
     href: "https://www.facebook.com/arcstudioproduction",
-    mark: "/manus-storage/arc-studio-logo-new_fdbde81f.png",
+    mark: assetPath("arc-studio-logo-new.png"),
     markAlt: "Arc Studio Production logo",
     copy: {
       en: {
