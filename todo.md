@@ -33,7 +33,7 @@
 - [x] Redesign the entry interaction so the pixel car visibly travels along an imaginary road into Start Journey.
 - [x] Remove Notes from the primary navigation while retaining the Notes content section.
 - [x] Keep a clear header and footer navigation presence on the main portfolio and both business pages.
-- [ ] Save a final checkpoint and deliver the corrected version.
+- [x] Save a final checkpoint and deliver the corrected version.
 - [x] Add Nayeem's Discord server as an accessible, verified community link.
 - [x] Strengthen interaction, animation, and visual detail across the portfolio without sacrificing mobile performance or reduced-motion support.
 - [x] Verify the Discord route, responsive motion, and refined visual hierarchy before saving the next checkpoint.
@@ -49,3 +49,13 @@
 - [x] Use arcstudioproduction02@gmail.com only on the Arc Studio page.
 - [x] Use beatofdhaka@gmail.com only on the Beat of Dhaka page.
 - [x] Verify both Gmail compose links and preserve nayeem002d@gmail.com on the personal portfolio.
+
+## GitHub hosting
+- [x] Prepare the portfolio repository for the user’s GitHub hosting path.
+- [x] Confirm the available GitHub export/authentication route before any repository mutation.
+- [x] Explain the final public-hosting step and obtain confirmation before posting or publishing.
+
+## GitHub runtime recovery
+- [x] Diagnose why the GitHub repository or Pages URL is not serving the portfolio.
+- [x] Upload the current portfolio source to nayeem02-06/nayeem-portfolio after GitHub access is enabled.
+- [x] Configure and verify the public GitHub Pages deployment.
