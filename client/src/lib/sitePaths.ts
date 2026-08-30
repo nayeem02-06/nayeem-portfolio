@@ -10,9 +10,8 @@ export function sitePath(path = "/") {
   return `${base}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
-const githubAssetBase = "https://raw.githubusercontent.com/nayeem02-06/nayeem-portfolio/main/github-assets";
 const isGitHubPages = base === "/nayeem-portfolio";
 
 export function assetPath(fileName: string) {
-  return isGitHubPages ? `${githubAssetBase}/${fileName}` : `/manus-storage/${fileName}`;
+  return isGitHubPages ? `${base}/github-assets/${fileName}` : `/manus-storage/${fileName}`;
 }
